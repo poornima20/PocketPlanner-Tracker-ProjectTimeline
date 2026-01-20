@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Project Timeline</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+</head>
+<body>
+
+<section class="timeline-page">
+  <h1 class="page-title" id="pageTitle" contenteditable="true" spellcheck="false">
+  Project Timeline
+</h1>
+
+<div class="year-label"></div>
+<div class="top-actions">
+  <button id="todayBtn" class="today-btn">
+    <i data-lucide="calendar-days"></i>
+  </button>
+</div>
+
+
+
+
+  <!-- TIMELINE WRAPPER -->
+  <div class="timeline-wrapper">
+<button class="nav left" aria-label="Previous">
+  <i data-lucide="chevron-left"></i>
+</button>
+
+    <div class="timeline-scroll">
+      <table class="timeline-table">
+       <thead>
+        <tr id="month-row"></tr>
+        <tr id="day-row"></tr>
+        <tr id="date-row"></tr>
+      </thead>
+
+
+
+<tbody id="timeline-body">
+  <!-- JS will generate exactly 10 rows -->
+</tbody>
+
+
+      </table>
+    </div>
+
+  <button class="nav right" aria-label="Next">
+  <i data-lucide="chevron-right"></i>
+</button>
+  </div>
+</section>
+
+
+<script src="script.js"></script>
+</body>
+</html>
