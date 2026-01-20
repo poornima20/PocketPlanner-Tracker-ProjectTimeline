@@ -32,6 +32,8 @@ function saveData(data) {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
 }
 
+
+
 document.addEventListener("DOMContentLoaded", () => {
   let data = loadData();
   const DAY_BUFFER = 31;
@@ -153,6 +155,36 @@ document.addEventListener("DOMContentLoaded", () => {
       body.appendChild(tr);
     }
   }
+  let touchStartX = 0;
+let touchEndX = 0;
+const SWIPE_THRESHOLD = 50;
+
+const swipeArea = document.querySelector(".timeline-wrapper");
+
+if ("ontouchstart" in window && swipeArea) {
+  swipeArea.addEventListener("touchstart", (e) => {
+    touchStartX = e.changedTouches[0].screenX;
+  }, { passive: true });
+
+  swipeArea.addEventListener("touchend", (e) => {
+    touchEndX = e.changedTouches[0].screenX;
+    handleSwipe();
+  }, { passive: true });
+}
+
+function handleSwipe() {
+  const diff = touchStartX - touchEndX;
+  if (Math.abs(diff) < SWIPE_THRESHOLD) return;
+
+  if (diff > 0) {
+    startDate.setDate(startDate.getDate() + 1); // swipe left → next
+  } else {
+    startDate.setDate(startDate.getDate() - 1); // swipe right → previous
+  }
+
+  render();
+}
+
 
 
   leftBtn.onclick = () => {
@@ -173,11 +205,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   render();
   lucide.createIcons();
-  const today = normalizeDate(new Date());
-  const cellDate = normalizeDate(startDate);
 
 });
-
-
-
 
