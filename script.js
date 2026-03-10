@@ -1,5 +1,5 @@
-const STORAGE_KEY = "timeline-data";
-const TITLE_KEY = "timeline-title";
+const STORAGE_KEY = "fullmoon.pocketplanner.projecttimeline";
+const TITLE_KEY = "fullmoon.pocketplanner.projecttimeline.title";
 const pageTitle = document.getElementById("pageTitle");
 
 /* load saved title */
